@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<style>
+    div {
+        color: #e53944;
+    }
+
+    button {
+        background-color: #d5d3e5;
+    }
+
+    .center {
+        margin: auto;
+        width: auto;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .c {
+        text-align: center;
+    }
+
+    .header {
+        position: fixed;
+        right: 1%;
+    }
+
+    fieldset {
+        width: 670px;
+        height: 470px;
+        background-color: #d5d3e5;
+        color: #f0afcd;
+    }
+</style>
+
+<body>
+    <span class="header">
+        <button type="button" onclick="document.location.href=''">
+            <div>기록</div>
+        </button>
+    </span>
+    <form action="" name="diarydata" method="post">
+        <p> <input type="text" name="user" placeholder="이름을 입력하세요"/></p>
+        <hr>
+        <br>
+        <span class="center">
+            <fieldset>
+                <span class="c">
+                    <legend>새 일기 작성</legend>
+                    <hr>
+                </span>
+                    <textarea name="text" placeholder="여기에 작성하세요" rows="27" cols="81"></textarea>
+                </fieldset>
+                <br><br>
+                <input type="submit" value="제출"/>
+        </span>
+    </form>
+</body>
+
+</html>
