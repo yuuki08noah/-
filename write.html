@@ -17,12 +17,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction : column;
     }
 
     .c {
         text-align: center;
     }
-
     .header {
         position: fixed;
         right: 1%;
@@ -53,9 +53,10 @@
                     <hr>
                 </span>
                     <textarea name="text" placeholder="여기에 작성하세요" rows="27" cols="81"></textarea>
-                </fieldset>
-                <br><br>
-                <input type="submit" value="제출"/>
+            </fieldset>
+            <div style="display:flex; justify-content: flex-end; align-items: end; width:670px;">
+                <span class="r"><input type="submit" value="제출"/></span>
+            </div>
         </span>
     </form>
 </body>
