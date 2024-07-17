@@ -244,6 +244,11 @@
     </div>
 
     <script>
+        const logedIn = JSON.parse(localStorage.getItem('loged-in'));
+        if(logedIn!=1) {
+            alert('로그인이 필요한 서비스입니다.');
+            window.location.href='index.html'
+        }
         let apiKey;
 
         async function loadApiKey() {

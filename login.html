@@ -1,176 +1,74 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다이어리 뷰어</title>
+    <title>로그인</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            margin: 0;
-            padding: 0;
+            background-color: rgba(25, 16, 16, 0.0);
+            ;
             display: grid;
             place-items: center;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
         }
 
         .header {
             position: relative;
-            display: grid;
-            justify-content: space-between;
+        }
+
+        .input {
+            width: 92%;
+            height: 5px;
+            padding: 24px;
+            border-radius: 2px;
+            border: 0px solid lightgrey;
+            background-color: rgba(0, 0, 0, 0.05);
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0px 0px 20px -18px;
+        }
+
+        form {
+            position: absolute;
+            top: 14%;
+            /* background-color: #ffffff; */
+            padding: 20px;
+            border-radius: 8px;
             width: 100%;
-            padding-top: 10px;
-            background-color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            grid-template-columns: 60% 15% 5%;
+            max-width: 600px;
+            box-shadow: 0px 0px 20px -18px;
+            box-shadow: black;
         }
 
-        .header .logo {
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-            margin-bottom: 10px;
+        label,
+        input,
+        textarea {
+            display: block;
+            width: 96.7%;
+            margin-top: 10px;
         }
 
-        .header .logo svg {
-            height: 40px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .header .menu {
+        #sub {
             display: grid;
             place-items: center;
-            display: flex;
-            gap: 15px;
-        }
-
-        .header .menu a {
-            margin-bottom: auto;
-            width: 110px;
-            height: 40px;
-            text-decoration: none;
-            background: var(--1, #E5E4F0);
-            font-weight: thin;
-            display: grid;
-            place-items: center;
-            border-radius: 5px;
-            flex-shrink: 0;
-        }
-
-        .header .menu a:hover {
-            text-decoration: underline;
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            display: grid;
-            place-items: center;
-            background-color: lightgrey;
             color: #000;
             border: none;
-            border-radius: 2.5px;
+            border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
-            width: 80px;
+            margin-top: 0px;
+            width: 110px;
             height: 40px;
             margin-left: auto;
+            flex-shrink: 0;
+            text-decoration: none;
+            background: var(--1, #E5E4F0);
         }
 
-        button:hover {
+        #sub:hover {
             background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .calendar {
-            width: 70%;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0px;
-            /* margin-top: 20px; */
-            /* border-top: 1px solid #ddd; */
-            /* 상단 선 추가 */
-            border-bottom: 1px solid #ddd;
-            /* 하단 선 추가 */
-            padding: 10px 0;
-            /* 위아래 패딩 추가 */
-        }
-
-        .month-year {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 0px;
-            margin-top: 20px;
-            /* 상단 마진 추가 */
-        }
-
-        .weekday {
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 0;
-            border-top: 1px solid #ddd;
-            /* 각 요일 위쪽 선 추가 */
-            border-bottom: 1px solid #ddd;
-            /* 각 요일 아래쪽 선 추가 */
-        }
-
-        .day {
-            background-color: transparent;
-            border: 0.5px solid lightgrey;
-            border-radius: 0px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .day:hover {
-            background-color: hsl(0, 100%, 98%);
-        }
-
-        .day.inactive {
-            background-color: transparent;
-            border: 0.5px solid lightgrey;
-            cursor: default;
-        }
-
-        .diary-count {
-            color: #ffffff;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-        }
-
-        #weekdays {
-            margin-top: 10px;
-            display: grid;
-            grid-template-columns: 1% 14% 14% 14% 14% 14% 14% 14% 1%;
-            grid-template-areas: "m a b c d e f g n";
-            width: 71.5%;
         }
     </style>
 </head>
@@ -235,89 +133,21 @@
             </svg>
         </div>
         <div class="menu">
-            <a href="index.html">쓰기</a>
+            <a href="write.html">쓰기</a>
             <a href="record.html">기록</a>
             <a href="clear.html">클리어</a>
         </div>
     </div>
-
-    <div class="month-year">2024년 7월</div>
-
-    <div id="weekdays">
-        <span></span>
-        <div class="weekday">일</div>
-        <div class="weekday">월</div>
-        <div class="weekday">화</div>
-        <div class="weekday">수</div>
-        <div class="weekday">목</div>
-        <div class="weekday">금</div>
-        <div class="weekday">토</div>
-        <span></span>
-    </div>
-    <div class="calendar" id="calendar">
-        <!-- 달력 생성 -->
-    </div>
-
-    <script>
-        const logedIn = JSON.parse(localStorage.getItem('loged-in'));
-        if (logedIn != 1) {
-            alert('로그인이 필요한 서비스입니다.');
-            window.location.href = 'index.html'
-        }
-        function getDiariesFromLocalStorage() {
-            const storedData = localStorage.getItem('diaries');
-            return storedData ? JSON.parse(storedData) : {};
-        }
-
-        function renderCalendar() {
-            const calendarDiv = document.getElementById('calendar');
-            calendarDiv.innerHTML = '';
-
-            const daysInMonth = 31;
-            const startDay = 1; // 2024년 7월 1일은 월요일
-            const diaries = getDiariesFromLocalStorage();
-
-            // 이전 달을 위한 빈 날짜 만들기
-            for (let i = 0; i < startDay; i++) {
-                const dayDiv = document.createElement('div');
-                dayDiv.classList.add('day', 'inactive');
-                calendarDiv.appendChild(dayDiv);
-            }
-
-            // 현재 달의 날짜 만들기
-            for (let date = 1; date <= daysInMonth; date++) {
-                const dayDiv = document.createElement('div');
-                dayDiv.classList.add('day');
-                dayDiv.textContent = date;
-                const dateKey = `2024-7-${date.toString().padStart(2, '0')}`;
-                const diaryEntries = diaries[dateKey];
-
-                if (diaryEntries) {
-                    const diaryCountDiv = document.createElement('div');
-                    diaryCountDiv.classList.add('diary-count');
-                    const diaryEntrieslength = (Object.keys(diaryEntries).length);
-                    if (diaryEntrieslength == 1) diaryCountDiv.style.backgroundColor = '#E5E4F0'
-                    else if (diaryEntrieslength == 2) diaryCountDiv.style.backgroundColor = '#D5D3E5'
-                    else if (diaryEntrieslength == 3) diaryCountDiv.style.backgroundColor = '#F0AFCD'
-                    else if (diaryEntrieslength == 4) diaryCountDiv.style.backgroundColor = '#EA7DA2'
-                    else if (diaryEntrieslength >= 5) diaryCountDiv.style.backgroundColor = '#E53944'
-
-                    diaryCountDiv.textContent = Object.keys(diaryEntries).length;
-                    dayDiv.appendChild(diaryCountDiv);
-
-                    dayDiv.addEventListener('click', () => {
-                        window.location.href = `info.html?date=${dateKey}`;
-                    });
-                } else {
-                    dayDiv.classList.add('inactive');
-                }
-                calendarDiv.appendChild(dayDiv);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            renderCalendar();
-        });
+    <br>
+    <form onsubmit="event.preventDefault(); login();" style="text-align: center">
+        <div style="float: left; margin-top: 20px;font-size: 1.5em; margin-left: 10px; margin-bottom: 70px;">로그인</div>
+        <br><br>
+        <input class="input" type="text" id="id" name="id" placeholder="아이디를 입력해주세요.." required><br><br>
+        <input class="input" style="margin-right: 19px;" type="password" id="password" name="password"
+            placeholder="비밀번호를 입력해주세요.." required><br><br>
+        <input id="sub" type="submit" value="로그인">
+    </form>
+    <script src="login.js">
     </script>
 </body>
 
