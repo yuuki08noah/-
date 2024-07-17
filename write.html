@@ -4,15 +4,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>소개 사이트</title>
-    <link rel="stylesheet" href="index.css">
+    <title>다이어리 저장</title>
     <style>
-        .header {
-            grid-template-columns: 80% 10% 0%;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
         }
 
-        .menu {
-            margin-bottom: 7%;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .header {
+            position: relative;
+            display: grid;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            grid-template-columns: 60% 15% 5%;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+
+        .header .logo svg {
+            height: 40px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .header .menu {
+            display: grid;
+            place-items: center;
+            display: flex;
+            gap: 15px;
+        }
+
+        .header .menu a {
+            margin-bottom: auto;
+            width: 110px;
+            height: 40px;
+            background-color: lightgrey;
+            text-decoration: none;
+            background: var(--1, #E5E4F0);
+            font-weight: thin;
+            display: grid;
+            place-items: center;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .header .menu a:hover {
+            text-decoration: underline;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        #h1 {
+            position: absolute;
+            left: 30%;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1.7em;
+            font-weight: 400;
+        }
+
+        form {
+            position: absolute;
+            top: 14%;
+            /* background-color: #ffffff; */
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        label,
+        input,
+        textarea {
+            display: block;
+            width: 96.7%;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        input {
+            margin-top: 20px;
+        }
+
+        #margin {
+            margin-top: 20%;
+        }
+
+        input,
+        textarea {
+            background-color: #F6F6F6;
+            border: 0px solid #ddd;
+            border-radius: 0px;
+            color: #333;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #name {
+            margin-top: 20px;
+        }
+
+        textarea {
+            height: 290px;
+            border-radius: 0;
+            margin-top: 20px;
+        }
+
+        button {
+            display: grid;
+            place-items: center;
+            background-color: lightgrey;
+            color: #000;
+            border: none;
+            border-radius: 2.5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 80px;
+            height: 40px;
+            margin-left: auto;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            background-color: lightgrey;
+            border: 0;
+            height: 1px;
         }
     </style>
 </head>
@@ -76,30 +217,139 @@
                 </g>
             </svg>
         </div>
-        <span class="menu" onclick="go()" style="cursor: pointer; justify-content: flex-end; ">로그인</span>
+        <div class="menu">
+            <a href="write.html">쓰기</a>
+            <a href="record.html">기록</a>
+            <a href="clear.html">클리어</a>
+
+        </div>
+    </div>
+    <div class="container">
+        <span id="h1">새 일기 작성</span>
+        <br>
+
+        <form id="diaryForm">
+            <hr>
+            <input type="text" id="name" placeholder="이름을 입력해주세요">
+            <input type="hidden" id="date">
+            <label for="diary"></label>
+            <textarea id="diary" required placeholder="일기 내용을 작성해 주세요"
+                oninput="recommendSongFromDiary(this.value)"></textarea>
+
+            <input type="text" id="song" required placeholder="오늘의 노래" value="오늘의 노래">
+
+            <button type="submit">제출</button>
+        </form>
     </div>
 
-    <section class="intro">
-        <h2 style="margin-left: 100px; display: flex;">함께일기</h2>
-        <p style="margin-left: 100px; display: flex;">이 웹사이트는 가족간에 소통이 적은 현대를 위해 가족과의 교류가 원활하게 만들어줄 웹사이트입니다.</p>
-    </section>
-    <section class="content">
-        <span id="1" class="box" style="margin-left: 100px; display: flex;"><img class="img" src="family.jpeg">
-            <h2 class="h">가족들과 좋은 유대감 형성</h2>
-            <p class="text">가족 구성원들이 서로의 일상을 공유하며 소통을 강화할 수 있습니다.</p>
-        </span>
-        <span id="2" class="box"
-            style="display: flex; margin-left: 700px; justify-content: flex-start; margin-top: -180px;"><img
-                style="width: 500px; position: absolute; left: 4%; top: 5%;" src="writing.jpg">
-            <h2 class="h">아이들의 글쓰기 및 표현력 향상</h2>
-            <p class="text">정기적으로 일기를 쓰는 습관을 기르며 책임감을 배울 수 있고, 창의력과 표현력을 키울 수 있습니다.</p>
-        </span>
-        <span id="3" class="box" style="margin-left: 100px; display: flex; margin-top: -180px;"><img src="read.jpg"
-                class="img" style="width: 370px; left: 14%;">
-            <h2 class="h">정서적 유대감 증대</h2>
-            <p class="text">기쁨, 슬픔, 성취 등을 함께 나누며 정서적인 유대감을 증가시킬 수 있습니다.</p>
-        </span>
-    </section>
-    <script src="index.js"></script>
+    <script>
+        const logedIn = JSON.parse(localStorage.getItem('loged-in'));
+        if (logedIn != 1) {
+            alert('로그인이 필요한 서비스입니다.');
+            window.location.href = 'index.html'
+        }
+        let apiKey;
+        async function loadApiKey() {
+            try {
+                const response = await fetch('key.json'); // JSON 파일 경로
+                const data = await response.json();
+                apiKey = data.openai; // JSON 파일에서 API 키 필드명에 따라 수정
+                // 여기서 API 키를 사용할 수 있습니다.
+                // console.log('Loaded API Key:', apiKey);
+                // 이후로 API 키를 사용하는 코드를 작성하면 됩니다.
+            } catch (error) {
+                console.error('Failed to load API key:', error);
+            }
+        }
+
+        loadApiKey();
+
+        async function recommendSongFromDiary(diaryText) {
+            const apiUrl = 'https://api.openai.com/v1/chat/completions';
+
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            };
+
+            const data = {
+                model: 'gpt-4-turbo',
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant.' },
+                    { role: 'user', content: `Here is my diary entry: ${diaryText}. Based on this diary, recommend a song with only its title and artist like Cruel Summer - Taylor Swift. Not sentences just title and artist. ONLY TITLE AND ARTIST` }
+                ],
+                max_tokens: 50
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const messageContent = result.choices[0].message.content.trim();
+
+                // Extract song title and artist from the response
+                // Assuming the response format is "Song Title - Artist"
+                const [songTitle, artist] = messageContent.split(' - ');
+
+                if (songTitle && artist) {
+                    document.getElementById("song").value = `${songTitle} - ${artist}`;
+                } else if (artist == undefined) {
+                } else {
+                    document.getElementById("song").value = '오늘의 노래';
+                }
+            } catch (error) {
+                console.error('Error recommending song:', error);
+                return "추천 곡을 가져오는 도중 오류가 발생했습니다.";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 오늘 날짜를 자동으로 설정
+            const date = new Date();
+            const today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+            console.log(today);
+            document.getElementById('date').value = today;
+
+            document.getElementById('diaryForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const date = document.getElementById('date').value;
+                const username = document.getElementById('name').value;
+                const diary = document.getElementById('diary').value;
+                const song = document.getElementById('song').value;
+
+                // 로컬 스토리지에서 기존 데이터 가져오기
+                const storedData = localStorage.getItem('diaries');
+                const diaries = storedData ? JSON.parse(storedData) : {};
+
+                // 날짜별 데이터 초기화
+                if (!diaries[date]) {
+                    diaries[date] = {};
+                }
+
+                // 날짜별 사용자 데이터 저장
+                diaries[date][username] = { diary: diary, song: song };
+
+                // 로컬 스토리지에 저장
+                localStorage.setItem('diaries', JSON.stringify(diaries));
+
+                // 폼 초기화
+                document.getElementById('diaryForm').reset();
+                document.getElementById('date').value = today; // 날짜 다시 설정
+
+                // 저장 후 페이지 이동
+                window.location.href = 'record.html';
+            });
+        });
+    </script>
 </body>
+
 </html>
