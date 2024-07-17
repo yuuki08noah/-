@@ -29,7 +29,7 @@
             padding-top: 10px;
             background-color: #f5f5f5;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            grid-template-columns: 80% 15% 5%;
+            grid-template-columns: 60% 15% 5%;
         }
 
         .header .logo {
@@ -43,6 +43,7 @@
         .header .logo svg {
             height: 40px;
             margin-right: 10px;
+            cursor: pointer;
         }
 
         .header .menu {
@@ -54,15 +55,16 @@
 
         .header .menu a {
             margin-bottom: auto;
-            width: 200%;
-            height: 80%;
+            width: 110px;
+            height: 40px;
             background-color: lightgrey;
             text-decoration: none;
-            color: #252525;
+            background: var(--1, #E5E4F0);
             font-weight: thin;
             display: grid;
             place-items: center;
-            border-radius: 2.5px;
+            border-radius: 5px;
+            flex-shrink: 0;
         }
 
         .header .menu a:hover {
@@ -159,7 +161,7 @@
 <body>
     <div class="header">
         <div class="logo">
-            <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="window.location.href='index.html'">
                 <path
                     d="M13.53 7.8358V33.3861C13.5115 34.9924 12.7905 36.5272 11.5239 37.6571C10.2572 38.787 8.54707 39.4208 6.765 39.4208C4.9829 39.4208 3.27277 38.787 2.00611 37.6571C0.739434 36.5272 0.0185331 34.9924 0 33.3861V7.8358C0.00116403 6.21874 0.714856 4.6683 1.98411 3.52547C3.25338 2.38264 4.97426 1.74102 6.76829 1.74172C7.89022 1.73904 8.99481 1.99079 9.98049 2.47381C9.99585 2.47975 10.0024 2.487 10.0098 2.487C10.0136 2.49076 10.0188 2.49311 10.0244 2.4936C10.5854 2.76949 11.0982 3.11839 11.5463 3.52906C12.1753 4.09385 12.6743 4.76504 13.0147 5.50411C13.3551 6.24318 13.5302 7.03559 13.53 7.8358Z"
                     fill="#EA7DA2" />
